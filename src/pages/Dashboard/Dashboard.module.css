@@ -1,0 +1,27 @@
+.pageTitle {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  color: #0f52ba;
+}
+
+.breadcumbs {
+  margin-top: 8px !important;
+}
+
+.breadActive {
+  color: #5c5c5c;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.breadActive:hover {
+  color: #181818;
+}
+
+.breadUnactive {
+  font-weight: 700;
+  color: #181818;
+}
+
+/* responsive */
