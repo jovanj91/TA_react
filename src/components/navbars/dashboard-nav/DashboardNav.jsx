@@ -7,7 +7,7 @@ import { FaUserCircle } from "../../../assets/assets";
 import { MdNotifications } from "react-icons/md";
 import axios from "axios";
 import { backendBaseApi } from "../../../services/api";
-backendBaseApi
+
 function DashboardNav() {
   const [data, setData] = useState("");
   const token = localStorage.getItem("token");
