@@ -6,12 +6,14 @@ import { Tooltip } from "antd";
 import { FaUserCircle } from "../../../assets/assets";
 import { MdNotifications } from "react-icons/md";
 import axios from "axios";
+import { backendBaseApi } from "../../../services/api";
+backendBaseApi
 function DashboardNav() {
   const [data, setData] = useState("");
   const token = localStorage.getItem("token");
   const nama = localStorage.getItem("Nama");
   useEffect(() => {
-    axios.get(`http://localhost:3000/user/loguser`, {
+    axios.get(`${backendBaseApi}/user/loguser`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
@@ -53,7 +55,7 @@ function DashboardNav() {
               ) : (
                 <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
               )}
-             
+
               <NavDropdown.Divider />
               <NavDropdown.Item href="/login" onClick={keluar}>Keluar</NavDropdown.Item>
             </NavDropdown>

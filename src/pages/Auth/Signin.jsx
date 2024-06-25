@@ -34,7 +34,7 @@ function Signin() {
         localStorage.setItem('Email', email)
         localStorage.setItem('token', response.data.token)
         swal({
-          title: `${backendBaseApi}`,
+          title: "Login Berhasil!",
           icon: "success",
           button: "OK!",
         });

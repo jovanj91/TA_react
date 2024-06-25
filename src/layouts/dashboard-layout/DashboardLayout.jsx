@@ -5,10 +5,12 @@ import DashboardSidebar from "../../components/sidebars/dashboard-sidebar/Dashbo
 import DashboardSidebarAdmin from "../../components/sidebarsAdmin/dashboard-sidebar/DashboardSidebarAdmin";
 import styles from "./DashboardLayout.module.css";
 import axios from "axios";
+import { backendBaseApi } from "../../services/api";
+
 function DashboardLayout(props) {
   const [data, setData] = useState("");
   useEffect(() => {
-    axios.get(`http://localhost:3000/user/loguser`, {
+    axios.get(`${backendBaseApi}/user/loguser`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
