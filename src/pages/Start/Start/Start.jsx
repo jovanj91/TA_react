@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Webcam from "react-webcam";
 import axios from "axios";
 import * as ml5 from "ml5";
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../../services/api";
 
 const baseURL = `${backendBaseApi}/datawajah/hasilpredict`;
 
