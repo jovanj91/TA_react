@@ -1,1 +1,1 @@
-export const backendBaseApi = process.env.BACKEND_API;
+export const backendBaseApi = 'http://52.220.9.253:3000';
