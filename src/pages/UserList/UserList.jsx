@@ -5,7 +5,7 @@ import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 import { Typography, Breadcrumbs } from "@mui/material";
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../services/api";
 
 function UserList() {
   const token = localStorage.getItem("token");

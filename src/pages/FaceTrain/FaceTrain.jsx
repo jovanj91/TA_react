@@ -7,7 +7,7 @@ import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 import { Typography, Breadcrumbs } from "@mui/material";
 import Webcam from "react-webcam";
 import axios from "axios";
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../services/api";
 
 const baseURL = `${backendBaseApi}/datawajah/kirim`;
 function FaceTrain() {

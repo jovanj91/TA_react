@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import forgotpassword from "../assets/img/forgot-password.png";
 import "../../assets/css/Sign.css";
 import axios from "axios";
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../services/api";
 
 
 function ForgotPassword() {

@@ -4,7 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import "../../assets/css/Sign.css";
 import axios from "axios";
 import swal from "sweetalert";
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../services/api";
 
 
 function ResetPassword() {

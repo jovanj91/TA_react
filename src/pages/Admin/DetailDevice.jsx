@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import { format } from 'date-fns';
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../services/api";
 function DetailDevice() {
   const params = useParams()
   const token = localStorage.getItem("token");

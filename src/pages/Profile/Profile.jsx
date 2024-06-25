@@ -9,7 +9,7 @@ import "../../assets/css/Profile.css";
 import { format } from 'date-fns';
 import axios from "axios";
 import swal from "sweetalert";
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../services/api";
 
 function Profile() {
     const navigate = useNavigate()

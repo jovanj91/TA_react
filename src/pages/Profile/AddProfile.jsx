@@ -8,7 +8,7 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import "../../assets/css/Profile.css";
 import axios from "axios";
 import swal from "sweetalert";
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../services/api";
 
 function AddProfile() {
     const navigate = useNavigate()

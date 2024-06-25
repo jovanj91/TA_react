@@ -10,7 +10,7 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import { format } from 'date-fns';
 import axios from "axios";
 import swal from "sweetalert";
-import { backendBaseApi } from "../../api";
+import { backendBaseApi } from "../../services/api";
 function ProfileAdmin() {
     const navigate = useNavigate()
     const email = localStorage.getItem("Email");
