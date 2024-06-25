@@ -1,0 +1,1 @@
+export const backendBaseApi = process.env.BACKEND_API;

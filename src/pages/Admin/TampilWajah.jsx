@@ -6,11 +6,13 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
 import { format } from 'date-fns';
+import { backendBaseApi } from "../../api";
+
 function TampilWajah() {
     const token = localStorage.getItem("token");
     const [data, setData] = useState("");
     useEffect(() => {
-        axios.get(`http://localhost:3000/admin/tampilwajah`, {
+        axios.get(`${backendBaseApi}/admin/tampilwajah`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             }

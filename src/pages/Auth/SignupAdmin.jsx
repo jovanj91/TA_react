@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 // import logo from "../assets/img/logo.png";
 import "../../assets/css/Sign.css";
+import { backendBaseApi } from "../../api";
+
 
 function SignupAdmin() {
   const [nama, setNama] = useState("");
@@ -10,7 +12,7 @@ function SignupAdmin() {
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState("");
   const url =
-    "http://localhost:3000/user/registeradmin";
+    `${backendBaseApi}/user/registeradmin`;
 
   const changeNama = (e) => {
     const value = e.target.value;
@@ -35,7 +37,7 @@ function SignupAdmin() {
       username: nama,
       email: email,
       password: password,
-    
+
     };
     axios.post(url, data).then((result) => {
       if (result) {
@@ -44,7 +46,7 @@ function SignupAdmin() {
           setNama("");
           setEmail("");
           setPassword("");
-   
+
           setAlert("Data Berhasil diSimpan");
           setTimeout(() => {
             setAlert("");
@@ -120,7 +122,7 @@ function SignupAdmin() {
                   required
                 />
               </div>
-             
+
               <button type="submit" className="btn-submit" onClick={klikDaftar}>
                 Buat Akun
               </button>

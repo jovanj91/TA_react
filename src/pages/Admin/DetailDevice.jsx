@@ -8,13 +8,14 @@ import Button from '@mui/material/Button';
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import { format } from 'date-fns';
+import { backendBaseApi } from "../../api";
 function DetailDevice() {
   const params = useParams()
   const token = localStorage.getItem("token");
   const [data, setData] = useState("");
   const [post, setPost] = useState("");
   useEffect(() => {
-    axios.get(`http://localhost:3000/admin/detaildevice/${params.id}`, {
+    axios.get(`${backendBaseApi}/admin/detaildevice/${params.id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
@@ -28,7 +29,7 @@ function DetailDevice() {
       });
   }, []);
   useEffect(() => {
-    axios.get('http://localhost:3000/device/lihatdevice', {
+    axios.get(`${backendBaseApi}/device/lihatdevice`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
@@ -46,9 +47,9 @@ function DetailDevice() {
     // var config = {
     //   method: 'post',
     // // maxBodyLength: Infinity,
-    //   url: `http://localhost:3000/device/pilih/${tempId}`,
+    //   url: `${backendBaseApi}/device/pilih/${tempId}`,
     //   id_device: tempId,
-    //   headers: { 
+    //   headers: {
     //     'Authorization': `Bearer ${localStorage.getItem('token')}`,
     //   }
     // };
@@ -61,7 +62,7 @@ function DetailDevice() {
     // .catch(function (error) {
     //   console.log(error.data);
     // });
-    axios.post(`http://localhost:3000/device/pilih/${params.id}`, { id_device: id_user }, {
+    axios.post(`${backendBaseApi}/device/pilih/${params.id}`, { id_device: id_user }, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
@@ -154,7 +155,7 @@ function DetailDevice() {
                             >
                               Pilih Device
                             </Button> */}
-                            <Button variant="contained" color="success"        
+                            <Button variant="contained" color="success"
                               onClick={(e) => onProgress(e, temp1.id)}>
                                 Pilih Device
                             </Button>

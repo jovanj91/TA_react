@@ -3,13 +3,15 @@ import { Link, useParams } from "react-router-dom";
 // import forgotpassword from "../assets/img/forgot-password.png";
 import "../../assets/css/Sign.css";
 import axios from "axios";
+import { backendBaseApi } from "../../api";
+
 
 function AktivasiAkun() {
     const params = useParams()
     const [alert, setAlert] = useState("");
     useEffect(() => {
     axios
-        .get(`http://localhost:3000/user/aktivasiAkun/${params.id}`)
+        .get(`${backendBaseApi}/user/aktivasiAkun/${params.id}`)
         .then(res => {
          console.log(res)
          if(res.status === 201){
@@ -38,7 +40,7 @@ function AktivasiAkun() {
                            {alert.message}
                         </div>
                             <Link className="btn-submit" to={"/login"}>OK</Link>
-                    
+
 
                     </div>
                 </div>

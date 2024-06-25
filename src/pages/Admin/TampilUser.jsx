@@ -7,11 +7,13 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
 import { format } from 'date-fns';
+import { backendBaseApi } from "../../api";
+
 function TampilUser() {
     const token = localStorage.getItem("token");
     const [data, setData] = useState("");
     useEffect(() => {
-        axios.get(`http://localhost:3000/admin/tampiluser`, {
+        axios.get(`${backendBaseApi}/admin/tampiluser`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             }
@@ -29,7 +31,7 @@ function TampilUser() {
         var config = {
             method: 'delete',
             // maxBodyLength: Infinity,
-            url: `http://localhost:3000/datawajah/deleteprofile/${tempId}`,
+            url: `${backendBaseApi}/datawajah/deleteprofile/${tempId}`,
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             }
@@ -67,7 +69,7 @@ function TampilUser() {
                                     <tr>
                                         <th>No</th>
                                         <th>Email</th>
-                                        <th>Username</th>   
+                                        <th>Username</th>
                                         <th>Action</th>
                                         {/* <th>Suhu</th>
                     <th>Status Suhu</th>
@@ -84,17 +86,17 @@ function TampilUser() {
                                                 {temp.username}
                                             </td>
                                             <td>
-                                                <Button   variant="contained" color="success"> 
+                                                <Button   variant="contained" color="success">
                                                  <Link to={`/detailuser/${temp.id}`} className="text-decoration-none active">
                                                     <h6 className="text-light">Detail User</h6>
                                                 </Link>
                                                 </Button>
-                                                <Button   variant="contained" color="success"> 
+                                                <Button   variant="contained" color="success">
                                                  <Link to={`/detaildevice/${temp.id}`} className="text-decoration-none active">
                                                     <h6 className="text-light">Detail device</h6>
                                                 </Link>
                                                 </Button>
-                                             
+
                                             </td>
                                         </tr>
 

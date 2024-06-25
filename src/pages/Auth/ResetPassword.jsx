@@ -4,6 +4,8 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import "../../assets/css/Sign.css";
 import axios from "axios";
 import swal from "sweetalert";
+import { backendBaseApi } from "../../api";
+
 
 function ResetPassword() {
     const params = useParams()
@@ -14,7 +16,7 @@ function ResetPassword() {
     const [password, setPassword] = useState("");
     const [alert, setAlert] = useState("");
     // const url =
-    //     "http://localhost:3000/user/resetpassword";
+    //     `${backendBaseApi}/user/resetpassword`;
 
     // const changeNama = (e) => {
     //     const value = e.target.value;
@@ -44,7 +46,7 @@ function ResetPassword() {
         //             button: "OK!",
         //         });
 
-        //         axios.get(`http://localhost:3000/user/loguser`, {
+        //         axios.get(`${backendBaseApi}/user/loguser`, {
         //             headers: {
         //                 'Authorization': `Bearer ${localStorage.getItem('token')}`
         //             },
@@ -72,7 +74,7 @@ function ResetPassword() {
 
     // useEffect(() => {
     // axios
-    //     .get(`http://localhost:3000/user/aktivasiAkun/${params.id}`)
+    //     .get(`${backendBaseApi}/user/aktivasiAkun/${params.id}`)
     //     .then(res => {
     //      console.log(res)
     //      if(res.status === 201){

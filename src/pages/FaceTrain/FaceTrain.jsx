@@ -2,12 +2,14 @@ import React, { useCallback, useRef, useState, useEffect } from "react";
 import { MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { Navigate, Link } from "react-router-dom";
 import styles from "./FaceTrain.module.css";
-import Button from '@mui/material/Button'; 
+import Button from '@mui/material/Button';
 import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 import { Typography, Breadcrumbs } from "@mui/material";
 import Webcam from "react-webcam";
 import axios from "axios";
-const baseURL = "http://localhost:3000/datawajah/kirim";
+import { backendBaseApi } from "../../api";
+
+const baseURL = `${backendBaseApi}/datawajah/kirim`;
 function FaceTrain() {
   const token = localStorage.getItem("token");
 
@@ -21,7 +23,7 @@ function FaceTrain() {
     facingMode: "user",
   };
   useEffect(() => {
-    axios.get(`http://localhost:3000/datawajah/lihat`,{
+    axios.get(`${backendBaseApi}/datawajah/lihat`,{
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         }
@@ -57,12 +59,12 @@ function FaceTrain() {
     var config = {
       method: 'delete',
     // maxBodyLength: Infinity,
-      url: `http://localhost:3000/datawajah/deleteprofile/${tempId}`,
-      headers: { 
+      url: `${backendBaseApi}/datawajah/deleteprofile/${tempId}`,
+      headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }
     };
-    
+
     axios(config)
     .then(function (response) {
       console.log(response.data);
@@ -130,14 +132,14 @@ function FaceTrain() {
                 </tr>
               </MDBTableHead>
               <MDBTableBody>
-                
+
             {/* { data !== null &&
               <>
                 {
                   data.map((temp, index) => {
                     <div key={index}>
                     {
-                      
+
                     temp.fotowajahs.map((temp1, index) => {
                       return (
                         <div key={index}>
@@ -149,7 +151,7 @@ function FaceTrain() {
                               <p className='fw-normal'>{temp.nama}</p>
                             </td>
                             <td>
-                          
+
                             <img
                                   src={"data:image/jpeg;base64," + temp1.base64}
                                   alt=''
@@ -158,8 +160,8 @@ function FaceTrain() {
                                 />
                             </td>
                             <td>
-                            <Button 
-                              style={{ textDecoration: 'none', color: '#29325d' }} 
+                            <Button
+                              style={{ textDecoration: 'none', color: '#29325d' }}
                               className="col-sm col-md-3 col-lg-3 shadow-sm border-1 border rounded-2 border-secondary px-2 mx-3 py-2 d-flex gap-2 align-items-center my-3 justify-content-center"
                               >
                                 Delete
@@ -176,7 +178,7 @@ function FaceTrain() {
               </>
             } */}
               { data && data.map((temp) => (
-                    temp.fotowajahs.map((temp1, index)=>( 
+                    temp.fotowajahs.map((temp1, index)=>(
                 <tr key={temp1.id}>
                   <td>
                     <p className='fw-normal'>{index + 1}</p>
@@ -185,7 +187,7 @@ function FaceTrain() {
                     <p className='fw-normal'>{temp.nama}</p>
                   </td>
                   <td>
-                
+
                   <img
                         src={"data:image/jpeg;base64," + temp1.base64}
                         alt=''
@@ -194,16 +196,16 @@ function FaceTrain() {
                       />
                   </td>
                   <td>
-                  <Button 
-                  
-                    key ={temp.fotowajahs.id} 
+                  <Button
+
+                    key ={temp.fotowajahs.id}
                     variant="contained" color="error"
                     className="col-sm col-md-3 col-lg-3 shadow-sm border-1 border rounded-2 border-secondary px-2 mx-3 py-2 d-flex gap-2 align-items-center my-3 justify-content-center"
                     onClick={(e) => onDelete(e, temp1.id)}
                     >
                       Delete
                   </Button>
-                  
+
                   </td>
                 </tr>
                 ))
@@ -211,7 +213,7 @@ function FaceTrain() {
               </MDBTableBody>
               {/* <MDBTableBody>
               { data && data.map((temp) => (
-                    temp.fotowajahs.map((temp1, index)=>( 
+                    temp.fotowajahs.map((temp1, index)=>(
                 <tr key={temp1.id}>
                   <td>
                     <p className='fw-normal'>{index + 1}</p>
@@ -220,7 +222,7 @@ function FaceTrain() {
                     <p className='fw-normal'>{temp.nama}</p>
                   </td>
                   <td>
-                
+
                   <img
                         src={"data:image/jpeg;base64," + temp1.base64}
                         alt=''
@@ -229,9 +231,9 @@ function FaceTrain() {
                       />
                   </td>
                   <td>
-                  <Button 
-                    style={{ textDecoration: 'none', color: '#29325d' }} 
-                    key ={temp1.id} 
+                  <Button
+                    style={{ textDecoration: 'none', color: '#29325d' }}
+                    key ={temp1.id}
                     className="col-sm col-md-3 col-lg-3 shadow-sm border-1 border rounded-2 border-secondary px-2 mx-3 py-2 d-flex gap-2 align-items-center my-3 justify-content-center"
                     onClick={onDelete(temp1.id)}
                     >
@@ -248,7 +250,7 @@ function FaceTrain() {
       </div>
         </div>
       </div>
-    </DashboardLayout>  
+    </DashboardLayout>
   );
 }
 

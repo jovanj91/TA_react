@@ -10,6 +10,7 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import { format } from 'date-fns';
 import axios from "axios";
 import swal from "sweetalert";
+import { backendBaseApi } from "../../api";
 function ProfileAdmin() {
     const navigate = useNavigate()
     const email = localStorage.getItem("Email");
@@ -22,7 +23,7 @@ function ProfileAdmin() {
         address: "",
         province:"",
         city: "",
-        postalCode: "",        
+        postalCode: "",
     });
     useEffect(() => {
         const apiUrl = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi';
@@ -43,7 +44,7 @@ function ProfileAdmin() {
         e.preventDefault();
         console.log(post);
         axios.put(
-            'http://localhost:3000/admin/updateprofileadmin',
+            `${backendBaseApi}/admin/updateprofileadmin`,
             {
                 fullName: post.fullName,
                 mobile: post.mobile,
@@ -73,7 +74,7 @@ function ProfileAdmin() {
             });
     }
     // useEffect(() => {
-    //     axios.get(`http://localhost:3000/admin/updateprofileadmin`, {
+    //     axios.get(`${backendBaseApi}/admin/updateprofileadmin`, {
     //         headers: {
     //             'Authorization': `Bearer ${localStorage.getItem('token')}`,
     //         }
@@ -180,11 +181,11 @@ function ProfileAdmin() {
                             <div className="col-md-8">
                                 <div className="profile-content">
 
-                                
+
                                     <div className="row g-3">
 
                                         <h3 className="d-flex align-items-center mb-3">
-                                          <b> Upload Data Perusahaan </b> 
+                                          <b> Upload Data Perusahaan </b>
                                         </h3>
                                         <form action="" onSubmit={submit}>
                                             <div className="col-md-6">
@@ -235,7 +236,7 @@ function ProfileAdmin() {
                                                     required
                                                 />
                                             </div>
-                                            
+
                                             <div className="col-md-6">
                                                 <label htmlFor="" className="form-label">
                                                     Provinsi Perusahaan
@@ -298,7 +299,7 @@ function ProfileAdmin() {
                                         </form>
                                     </div>
 
-                                
+
                                 </div>
                             </div>
                         </div>

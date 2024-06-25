@@ -4,6 +4,8 @@ import axios from "axios";
 // import logo from "../assets/img/logo.png";
 import "../../assets/css/Sign.css";
 import swal from "sweetalert";
+import { backendBaseApi } from "../../api";
+
 
 function Signin() {
   const navigate = useNavigate()
@@ -11,7 +13,7 @@ function Signin() {
   const [password, setPassword] = useState("");
 
   const url =
-    "http://localhost:3000/user/login";
+    `${backendBaseApi}/user/login`;
 
   const changeEmail = (e) => {
     const value = e.target.value;
@@ -37,7 +39,7 @@ function Signin() {
           button: "OK!",
         });
 
-        axios.get(`http://localhost:3000/user/loguser`, {
+        axios.get(`${backendBaseApi}/user/loguser`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           },

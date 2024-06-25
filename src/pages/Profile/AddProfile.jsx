@@ -8,6 +8,8 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import "../../assets/css/Profile.css";
 import axios from "axios";
 import swal from "sweetalert";
+import { backendBaseApi } from "../../api";
+
 function AddProfile() {
     const navigate = useNavigate()
     const email = localStorage.getItem("Email");
@@ -49,7 +51,7 @@ function AddProfile() {
     //   }, []);
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/datawajah/profile`, {
+            .get(`${backendBaseApi}/datawajah/profile`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 }
@@ -80,7 +82,7 @@ function AddProfile() {
     const submit = () => {
         var config = {
             method: 'put',
-            url: 'http://localhost:3000/datawajah/updateprofile',
+            url: `${backendBaseApi}/datawajah/updateprofile`,
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             },
@@ -113,7 +115,7 @@ function AddProfile() {
                 console.log((error));
             });
         // axios.put(
-        //     'http://localhost:3000/datawajah/updateprofile',
+        //     '${backendBaseApi}/datawajah/updateprofile',
         //     {
         //       data: data
         //     },
@@ -172,7 +174,7 @@ function AddProfile() {
                         <div className="row profile">
                             <div className="col-md-4">
                                 <div className="profile-sidebar">
-                               
+
                                     <div className="profile-userpic">
                                        <div className="text-center">
                                         <img
@@ -192,7 +194,7 @@ function AddProfile() {
                                             <p>{email} </p>
                                         </div>
                                     </div>
-                                   
+
                                     {/* <div className="profile-usertitle">
                                     <a href="/addprofile">
                                                 <button className="btn btn-primary">Edit Profile</button>
@@ -236,7 +238,7 @@ function AddProfile() {
                             </div>
                             <div className="col-md-8">
                                 <div className="profile-content">
-                                    {/* 
+                                    {/*
                                     {data.namalengkap != null ? (
                                         // data.map((temp) => (
                                         <div className="row g-3" key={data.id}>
@@ -324,7 +326,7 @@ function AddProfile() {
                                                     {data.kodepos}
                                                 </label>
                                             </div>
-                                       
+
                                         </div>
                                         //  ))
                                     ) : (<div className="row g-3"> */}
@@ -361,7 +363,7 @@ function AddProfile() {
                                                     onChange={(e) => setTempatlahir(e.target.value)}
                                                     placeholder= ""
                                                     autoComplete="off"
-                                                
+
                                                 />
                                             </div>
                                             <div className="col-md-6">
@@ -377,9 +379,9 @@ function AddProfile() {
                                                     onChange={(e) => setTanggallahir(e.target.value)}
                                                     placeholder=""
                                                     autoComplete="off"
-                                              
+
                                                 />
-                                            </div> 
+                                            </div>
                                             <div className="col-md-6">
                                                 <label htmlFor="" className="form-label">
                                                     Jenis Kelamin
@@ -397,7 +399,7 @@ function AddProfile() {
                                                     <option value="Laki-laki">Laki-laki</option>
                                                     <option value="Perempuan">Perempuan</option>
                                                 </select>
-                                            </div> 
+                                            </div>
                                              <div className="col-md-6">
                                                 <label htmlFor="" className="form-label">
                                                     Agama
@@ -420,7 +422,7 @@ function AddProfile() {
                                                     <option value="Buddha">Buddha</option>
                                                     <option value="Konghucu">Konghucu</option>
                                                 </select>
-                                            </div> 
+                                            </div>
                                              <div className="col-md-6">
                                                 <label htmlFor="" className="form-label">
                                                     NO WA
@@ -434,7 +436,7 @@ function AddProfile() {
                                                     onChange={(e) => setNohp(e.target.value)}
                                                     placeholder= ""
                                                     autoComplete="off"
-                                                  
+
                                                 />
                                             </div>
                                             <div className="col-md-6">
@@ -450,9 +452,9 @@ function AddProfile() {
                                                     onChange={(e) => setAlamat(e.target.value)}
                                                     placeholder= ""
                                                     autoComplete="off"
-                                               
+
                                                 />
-                                            </div> 
+                                            </div>
                                              <div className="col-md-6">
                                                 <label htmlFor="" className="form-label">
                                                     Provinsi
@@ -471,7 +473,7 @@ function AddProfile() {
                                                     <option value={region.nama}>{region.nama}</option>
                                                     ))}
                                                 </select>
-                                            </div> 
+                                            </div>
                                             <div className="col-md-6">
                                                 <label htmlFor="" className="form-label">
                                                     Kota
@@ -485,7 +487,7 @@ function AddProfile() {
                                                     onChange={(e) => setKota(e.target.value)}
                                                     placeholder= ""
                                                     autoComplete="off"
-                                                
+
                                                 />
                                             </div>
                                             <div className="col-md-6">
@@ -501,7 +503,7 @@ function AddProfile() {
                                                     onChange={(e) => setKodepos(e.target.value)}
                                                     placeholder= ""
                                                     autoComplete="off"
-                                                
+
                                                 />
                                             </div> <br /> */}
                                             <div className="col-md-12">

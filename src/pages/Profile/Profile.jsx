@@ -9,6 +9,8 @@ import "../../assets/css/Profile.css";
 import { format } from 'date-fns';
 import axios from "axios";
 import swal from "sweetalert";
+import { backendBaseApi } from "../../api";
+
 function Profile() {
     const navigate = useNavigate()
     const email = localStorage.getItem("Email");
@@ -39,7 +41,7 @@ function Profile() {
           });
       }, []);
       useEffect(() => {
-       
+
         const apiUrl ='https://alamat.thecloudalert.com/api/kabkota/get';
         axios.get(apiUrl)
           .then(response => {
@@ -58,7 +60,7 @@ function Profile() {
         e.preventDefault();
         console.log(post);
         axios.put(
-            'http://localhost:3000/datawajah/updateprofile',
+            `${backendBaseApi}/datawajah/updateprofile`,
             {
                 namalengkap: post.namalengkap,
                 tempatlahir: post.tempatlahir,
@@ -89,7 +91,7 @@ function Profile() {
             });
     }
     useEffect(() => {
-        axios.get(`http://localhost:3000/datawajah/profile`, {
+        axios.get(`${backendBaseApi}/datawajah/profile`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             }
@@ -283,13 +285,13 @@ function Profile() {
                                                     {data.kodepos}
                                                 </label>
                                             </div>
-                                       
+
                                         </div>
                                         //  ))
                                     ) : (<div className="row g-3">
 
                                         <h3 className="d-flex align-items-center mb-3">
-                                          <b> Upload Data Pribadi </b> 
+                                          <b> Upload Data Pribadi </b>
                                         </h3>
                                         <form action="" onSubmit={submit}>
                                             <div className="col-md-6">

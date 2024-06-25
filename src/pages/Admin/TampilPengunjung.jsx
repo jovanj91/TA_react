@@ -6,12 +6,13 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
 import { format } from 'date-fns';
+import { backendBaseApi } from "../../api";
 function TampilPengunjung() {
     const token = localStorage.getItem("token");
     const [data, setData] = useState("");
     const [device, setDevice] = useState("");
     useEffect(() => {
-        axios.get(`http://localhost:3000/admin/tampilpengunjung`, {
+        axios.get(`${backendBaseApi}/admin/tampilpengunjung`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             }

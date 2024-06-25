@@ -5,12 +5,14 @@ import DashboardLayout from "../../layouts/dashboard-layout/DashboardLayout";
 import { Typography, Breadcrumbs } from "@mui/material";
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
+import { backendBaseApi } from "../../api";
+
 function UserList() {
   const token = localStorage.getItem("token");
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    axios.get(`http://localhost:3000/device/lihat`,{
+    axios.get(`${backendBaseApi}/device/lihat`,{
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         }
@@ -31,7 +33,7 @@ function UserList() {
   if(loading){
     return <p>Loading...</p>
   }
-  
+
   return (
     <DashboardLayout>
       <div className={styles.wrapper}>

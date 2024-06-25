@@ -6,12 +6,14 @@ import { Typography, Breadcrumbs } from "@mui/material";
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
 import { format } from 'date-fns';
+import { backendBaseApi } from "../../api";
+
 function Report() {
   const token = localStorage.getItem("token");
   const [data, setData] = useState("");
   const [device, setDevice] = useState("");
   useEffect(() => {
-    axios.get(`http://localhost:3000/datawajah/rekappengunjung`, {
+    axios.get(`h${backendBaseApi}/datawajah/rekappengunjung`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
       }

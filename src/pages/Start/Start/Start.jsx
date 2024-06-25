@@ -8,7 +8,9 @@ import Button from '@mui/material/Button';
 import Webcam from "react-webcam";
 import axios from "axios";
 import * as ml5 from "ml5";
-const baseURL = "http://localhost:3000/datawajah/hasilpredict";
+import { backendBaseApi } from "../../api";
+
+const baseURL = `${backendBaseApi}/datawajah/hasilpredict`;
 
 // const columns = [
 //     {
@@ -55,7 +57,7 @@ const videoConstraints = {
 };
 
 function Start() {
-  
+
   const token = localStorage.getItem("token");
 
   const [base64, setBase64] = useState(null);
@@ -92,7 +94,7 @@ function Start() {
           window.location.reload()
         }, 20000)
       }
-      
+
     }).catch((err) => {
       setError(err)
     })
@@ -123,7 +125,7 @@ function Start() {
       objectDetector.detect(webcamRef.current.video, (err, results) => {
         const ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, width, height);
-      
+
           results.forEach((detection) => {
             if (results[0].label === 'person' && results[0].confidence <= 0.8984394240379333) {
             ctx.beginPath();
@@ -135,7 +137,7 @@ function Start() {
             const imageSrc = webcamRef.current.getScreenshot({ width: 224, height: 224 });
             const encodedString = imageSrc.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
             setBase64(imageSrc);
-        
+
             axios.post(baseURL, { base64: encodedString }, {
               headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -150,7 +152,7 @@ function Start() {
                 }, 10000)
               }
             }).catch((err) => {
-              setError(err) 
+              setError(err)
               setStatus(null); // Mengatur status ke nilai default atau null
               setData(null);
               setTimeout(() => {
@@ -159,7 +161,7 @@ function Start() {
             })
           }
           });
-    
+
       });
     };
 
@@ -192,7 +194,7 @@ function Start() {
             <h1 className={styles.mainTitleText}>Selamat Datang</h1>
             <h1 className={styles.mainTitleText}>Silahkan Masuk</h1>
           </div>
-        ): error ?( 
+        ): error ?(
         <div className={styles.mainTitle1}>
           <h1 className={styles.mainTitleText}>Selamat Datang</h1>
           <h1 className={styles.mainTitleText}>Mohon Maaf Anda Tidak Boleh Masuk Ruangan</h1>
@@ -216,7 +218,7 @@ function Start() {
                   screenshotFormat="image/jpeg"
                   videoConstraints={videoConstraints}
                 />
-                
+
                 <Button className={styles.button} onClick={capture} variant="contained" component="label">
                   Ambil Gambar
                 </Button>
