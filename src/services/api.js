@@ -1,1 +1,1 @@
-export const backendBaseApi = 'http://52.220.9.253:3000';
+export const backendBaseApi = 'https://notolali.xyz';
